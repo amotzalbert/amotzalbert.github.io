@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מסלולי טיול בשרון · קיץ 2026</title>
+  <meta name="description" content="מדריך מסלולי טיול באזור השרון לקיץ 2026: מסלולים, דרכי הגעה, תחזית מזג אוויר חיה, מחירים, חניה ומפה אינטראקטיבית.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="מסלולי טיול בשרון · קיץ 2026">
+  <meta property="og:description" content="מסלולים, דרכי הגעה, מזג אוויר, מחירים, חניה ומפה אינטראקטיבית באזור השרון.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+
+  <link rel="stylesheet" href="sharon.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="#top" class="brand">שרון · קיץ 2026</a>
+    <nav class="nav" aria-label="ניווט ראשי">
+      <a href="#weather">מזג אוויר</a>
+      <a href="#map">מפה</a>
+      <a href="#trails">מסלולים</a>
+      <a href="#climate">אקלים</a>
+      <a href="#info">מידע מעשי</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <!-- פתיח -->
+    <section class="hero">
+      <h1>מסלולי טיול בשרון</h1>
+      <p class="hero-sub">מדריך מעשי לעונת הקיץ 2026 — מסלולים, דרכי הגעה, מזג אוויר, מחירים, חניה ומפה.</p>
+      <p class="hero-note">בקיץ השרון חם ולח. רוב המסלולים חשופים לשמש, ולכן מומלץ לצאת בשעות הבוקר המוקדמות,
+      להצטייד במים, בכובע ובקרם הגנה, ולסיים לפני שעות הצהריים החמות.</p>
+    </section>
+
+    <!-- מזג אוויר -->
+    <section id="weather" class="section">
+      <div class="section-head">
+        <h2>תחזית מזג אוויר</h2>
+        <p>בחרו מסלול וקבלו את מזג האוויר העדכני בנקודת היעד.</p>
+      </div>
+      <div class="weather-widget">
+        <label class="weather-label" for="weather-select">מסלול:</label>
+        <select id="weather-select" aria-label="בחירת מסלול לתחזית מזג אוויר"></select>
+        <div id="weather-result" class="weather-result" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- מפה -->
+    <section id="map-section" class="section">
+      <div class="section-head">
+        <h2>מפת המסלולים</h2>
+        <p>שמונה יעדים באזור השרון. לחצו על סמן לפרטים ולקישור לכרטיס המלא.</p>
+      </div>
+      <div id="map" role="application" aria-label="מפה אינטראקטיבית של מסלולי השרון"></div>
+    </section>
+
+    <!-- מסלולים -->
+    <section id="trails" class="section">
+      <div class="section-head">
+        <h2>המסלולים</h2>
+        <p>סננו לפי מה שמתאים לכם להיום.</p>
+      </div>
+      <div class="filters" role="group" aria-label="סינון מסלולים">
+        <button class="filter-btn" data-filter="all" aria-pressed="true">הכול</button>
+        <button class="filter-btn" data-filter="free" aria-pressed="false">חינם</button>
+        <button class="filter-btn" data-filter="shaded" aria-pressed="false">מוצל</button>
+        <button class="filter-btn" data-filter="family" aria-pressed="false">למשפחות</button>
+      </div>
+      <div id="trail-cards" class="trail-grid"></div>
+    </section>
+
+    <!-- אקלים -->
+    <section id="climate" class="section">
+      <div class="section-head">
+        <h2>אקלים הקיץ בשרון</h2>
+        <p>ערכים אופייניים לחודשים יולי–אוגוסט במישור החוף.</p>
+      </div>
+      <div class="table-wrap">
+        <table class="climate-table">
+          <thead>
+            <tr><th>מדד</th><th>ערך אופייני (יולי–אוגוסט)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>טמפרטורה מרבית ביום</td><td>כ-30–31°C</td></tr>
+            <tr><td>טמפרטורה מזערית בלילה</td><td>כ-23–25°C</td></tr>
+            <tr><td>לחות יחסית</td><td>כ-67%–80% (לחה במיוחד באוגוסט)</td></tr>
+            <tr><td>טמפרטורת הים</td><td>כ-28–29°C (שיא באוגוסט)</td></tr>
+            <tr><td>שעות שמש</td><td>עד כ-12 שעות ביום</td></tr>
+            <tr><td>משקעים</td><td>זניחים (קיץ יבש)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fineprint">הנתונים הם ממוצעי אקלים רב-שנתיים, לא תחזית. למזג האוויר היומי השתמשו בווידג'ט שלמעלה.</p>
+    </section>
+
+    <!-- מידע מעשי ובטיחות -->
+    <section id="info" class="section">
+      <div class="section-head">
+        <h2>מידע מעשי ובטיחות</h2>
+      </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>מה להביא</h3>
+          <ul>
+            <li>מים בכמות מספקת (לפחות 1.5–2 ליטר לאדם).</li>
+            <li>כובע, משקפי שמש וקרם הגנה.</li>
+            <li>נעליים סגורות ובגדים קלים ובהירים.</li>
+            <li>חטיפים, טלפון טעון ועזרה ראשונה בסיסית.</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>בטיחות בקיץ</h3>
+          <ul>
+            <li>צאו לדרך בבוקר המוקדם וסיימו לפני הצהריים.</li>
+            <li>הימנעו ממאמץ בשעות החום והישארו בצל כשאפשר.</li>
+            <li>שתו לפני שמרגישים צמא וזהו סימני התייבשות.</li>
+            <li>בדקו את התחזית והתרעות לפני היציאה.</li>
+          </ul>
+        </div>
+        <div class="info-card">
+          <h3>קישורים שימושיים</h3>
+          <ul>
+            <li>רשות הטבע והגנים — <a href="https://www.parks.org.il" target="_blank" rel="noopener">parks.org.il</a> · מוקד ‎*3639</li>
+            <li>השירות המטאורולוגי — <a href="https://ims.gov.il/he" target="_blank" rel="noopener">ims.gov.il</a></li>
+            <li>קק"ל (יערות וחניוני יום) — <a href="https://www.kkl.org.il" target="_blank" rel="noopener">kkl.org.il</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="fineprint">מחירי הכניסה ושעות הפתיחה של אתרי רשות הטבע והגנים מתעדכנים מעת לעת.
+      מומלץ לאמת אותם באתר רט"ג או בטלפון ‎*3639 לפני היציאה.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>נתוני מפה: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>
+       · מזג אוויר: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>
+    <p class="muted">עודכן ‎<span id="year"></span></p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="sharon.js"></script>
+</body>
+</html>
