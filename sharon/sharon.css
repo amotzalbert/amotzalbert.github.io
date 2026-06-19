@@ -286,6 +286,93 @@ main { display: block; }
 .site-footer p { margin: 0.3rem 0; }
 .site-footer .muted { color: var(--text-dim); }
 
+/* ===== כרטיס לחיץ ===== */
+.trail-card { cursor: pointer; transition: border-color .15s, transform .15s; }
+.trail-card:hover { border-color: var(--hairline); transform: translateY(-2px); }
+.trail-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.trail-more { color: var(--accent-2); font-weight: 600; font-size: 0.92rem; }
+
+/* קישור בתוך popup של המפה */
+.popup-link {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+}
+
+/* ===== חלון פירוט (Modal) ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(0.5rem, 3vw, 2.5rem);
+  overflow-y: auto;
+}
+.modal[hidden] { display: none; }
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 8, 20, 0.78);
+  backdrop-filter: blur(3px);
+}
+.modal-dialog {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 760px);
+  background: var(--bg-2);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: clamp(1.3rem, 4vw, 2.2rem);
+  margin: auto;
+}
+.modal-close {
+  position: absolute;
+  top: 0.7rem;
+  left: 0.9rem;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--hairline);
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.modal-close:hover { color: var(--accent-2); border-color: var(--accent); }
+.modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding-inline-start: 2.4rem;
+}
+.modal-head h2 { font-size: clamp(1.3rem, 4vw, 1.8rem); }
+.modal-section { margin-top: 1.6rem; }
+.modal-section h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.modal-section p { margin: 0; }
+.modal-section .trail-facts { margin: 0; }
+.modal-section .trail-actions { margin-top: 1rem; }
+.modal-map {
+  height: clamp(260px, 40vh, 360px);
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 0.7rem;
+}
+
 /* ===== רספונסיביות ===== */
 @media (max-width: 560px) {
   .nav { font-size: 0.82rem; }

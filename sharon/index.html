@@ -139,8 +139,18 @@
     </section>
   </main>
 
+  <!-- חלון פירוט מסלול -->
+  <div id="trail-modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-dialog" role="document">
+      <button type="button" class="modal-close" aria-label="סגירת החלון" data-close>×</button>
+      <div id="modal-body" class="modal-body"></div>
+    </div>
+  </div>
+
   <footer class="site-footer">
     <p>נתוני מפה: <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>
+       · שבילים מסומנים: <a href="https://israelhiking.osm.org.il/" target="_blank" rel="noopener">Israel Hiking Map</a>
        · מזג אוויר: <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></p>
     <p class="muted">עודכן ‎<span id="year"></span></p>
   </footer>
