@@ -239,6 +239,33 @@ main { display: block; }
   gap: 0.6rem;
 }
 
+/* ===== מסלולים עירוניים לפי עיר ===== */
+.city-list { display: grid; gap: 2.4rem; }
+.city-block {
+  background: var(--bg-2);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-right: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: clamp(1.3rem, 3vw, 2rem);
+}
+.city-head { margin-bottom: 0.8rem; }
+.city-head h3 { font-size: clamp(1.4rem, 3.5vw, 1.9rem); }
+.city-en { color: var(--text-dim); font-size: 0.65em; font-weight: 500; }
+.city-tagline { color: var(--accent-2); font-weight: 600; margin: 0.25rem 0 0; }
+.city-intro { color: var(--text); margin: 0 0 1.5rem; max-width: 70ch; }
+.city-block .trail-grid { margin-top: 0.5rem; }
+
+/* רשימת עצירות בחלון הפירוט */
+.stops-list {
+  margin: 0;
+  padding-inline-start: 1.4rem;
+  display: grid;
+  gap: 0.9rem;
+}
+.stops-list li { padding-inline-start: 0.3rem; }
+.stop-name { display: block; font-weight: 700; color: #fff; }
+.stop-text { display: block; color: var(--text); font-size: 0.95rem; margin-top: 0.15rem; }
+
 /* ===== טבלת אקלים ===== */
 .table-wrap { overflow-x: auto; }
 .climate-table {
